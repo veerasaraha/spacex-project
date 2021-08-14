@@ -4,9 +4,9 @@ import History from './components/history/History'
 import Home from './components/home/Home'
 import Launches from './components/launches/Launches'
 import Rockets from './components/rockets/Rockets'
-import HistoricalEventPage from './pages/HistoricalEventPage'
-import LaunchePage from './pages/LaunchePage'
-import RocketPage from './pages/RocketPage'
+import HistoricalEventPage from './pages/historicalPage/HistoricalEventPage'
+import LaunchePage from './pages/launchPage/LaunchePage'
+import RocketPage from './pages/rocketPage/RocketPage'
 
 function App() {
   return (

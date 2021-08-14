@@ -8,7 +8,7 @@ import './Home.css'
 const Home = () => {
   const [companyInfo, setCompanyInfo] = useState({})
 
-  const { name, founder, founded, summary } = companyInfo
+  const { founded, summary } = companyInfo
 
   useEffect(() => {
     const fetchCompanyInfo = async () => {
@@ -45,9 +45,9 @@ const Home = () => {
 
       <div className='home-bottom'>
         <section className='home-section-company-info'>
-          <div className='company-info-box-one'>
+          {/* <div className='company-info-box-one'>
             <div className='company-founded-name'>{name}</div>
-          </div>
+          </div> */}
           <div className='company-info-box-two'>
             <div className='company-founded-text'>{founded}</div>
             <hr className='line' />

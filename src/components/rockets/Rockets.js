@@ -47,7 +47,7 @@ const Rockets = () => {
               <p>{rocket && rocket.description}</p>
             </div>
 
-            <Link to={rocket && `/rocket/${rocket.rocket_name}`}>
+            <Link to={rocket && `/rocket/${rocket.rocket_id}`}>
               <button>Read More</button>
             </Link>
           </div>
