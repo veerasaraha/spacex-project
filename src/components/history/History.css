@@ -68,3 +68,9 @@ i {
   margin: 5px;
   padding: 8px;
 }
+
+button {
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}

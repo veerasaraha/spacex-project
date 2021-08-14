@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Rockets.css'
 
 const Rockets = () => {
@@ -45,6 +46,10 @@ const Rockets = () => {
               </div>
               <p>{rocket && rocket.description}</p>
             </div>
+
+            <Link to={rocket && `/rocket/${rocket.rocket_name}`}>
+              <button>Read More</button>
+            </Link>
           </div>
 
           {index < allRockets.length - 1 && (

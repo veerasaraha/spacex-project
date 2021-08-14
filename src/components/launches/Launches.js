@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import _loadash from 'lodash'
 import './Launches.css'
+import { Link } from 'react-router-dom'
 
 const Launches = () => {
   const [allLaunches, setAllLaunches] = useState([])
@@ -28,7 +29,6 @@ const Launches = () => {
     setPageSize(pageNo * 10)
   }
 
-  // console.log(allLaunches.map((la) => ({ rocket_id: la.rocket.rocket_id })))
   return (
     <div className='launch'>
       <div className='launch-title'>
@@ -48,6 +48,9 @@ const Launches = () => {
                 <p>{launch.launch_site.site_name_long}</p>
               </div>
             </article>
+            <Link to={`/launch/${launch.flight_number}`}>
+              <button>Read More</button>
+            </Link>
           </div>
         ))}
       </div>

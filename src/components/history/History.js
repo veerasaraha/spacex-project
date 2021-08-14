@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './History.css'
 
 const History = () => {
@@ -58,6 +59,10 @@ const History = () => {
               </span>
               <h3>{historyEvent.title}</h3>
             </article>
+
+            <Link to={`/historical-event/${historyEvent.id}`}>
+              <button>Read More</button>
+            </Link>
           </div>
         ))}
       </div>
