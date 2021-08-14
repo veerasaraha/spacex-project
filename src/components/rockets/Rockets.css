@@ -1,0 +1,70 @@
+.rockets {
+  margin: 0 auto;
+  width: 1024px;
+}
+
+.rockets-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.rockets-title {
+  text-align: center;
+  margin: 10px;
+  font-size: 20px;
+  padding: 15px;
+  border: 1px solid #333;
+}
+
+.rockets-search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rockets-search-form input {
+  width: 50%;
+  padding: 12px;
+  margin: 10px;
+}
+
+.rockets-slideshow {
+  margin: 0 auto;
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.rocket-right {
+  flex: 5%;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.rocket-left {
+  flex: 5%;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.rocket-container {
+  flex: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rocket-image {
+  width: 100%;
+  margin: 20px;
+}
+
+.rocket-image img {
+  width: 100%;
+  height: 550px;
+  object-fit: contain;
+}

@@ -27,6 +27,8 @@ const Launches = () => {
     setStartIndex(startIndex)
     setPageSize(pageNo * 10)
   }
+
+  // console.log(allLaunches.map((la) => ({ rocket_id: la.rocket.rocket_id })))
   return (
     <div className='launch'>
       <div className='launch-title'>
