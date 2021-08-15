@@ -1,6 +1,7 @@
 .launch {
   margin: 0 auto;
   width: 1024px;
+  background-color: #f9f9fb;
 }
 
 .launch-title {
@@ -29,7 +30,7 @@
   margin-bottom: 30px;
   padding: 10px;
   row-gap: 20px;
-  background: #fcfaf8;
+  background: #f9f9fb;
   column-gap: 5px;
   display: flex;
   align-items: center;

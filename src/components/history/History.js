@@ -2,6 +2,9 @@ import axios from 'axios'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Wiki from '../../images/icons8-wikipedia-240.png'
+import Reddit from '../../images/icons8-reddit-240.png'
+import ArticlePng from '../../images/icons8-news-240.png'
 import './History.css'
 
 const History = () => {
@@ -17,61 +20,56 @@ const History = () => {
   }, [])
 
   return (
-    <section className='history'>
+    <div className='history'>
       <div className='history-title'>
-        <h1>Historical Events</h1>
+        <h1>History</h1>
       </div>
 
-      <div className='historical-events'>
-        {historicalEvents.map((historyEvent) => (
-          <div key={historyEvent.id} className='history-event'>
-            {console.log(historyEvent.event_date_utc.substring(0, 10))}
-            <article>
-              <div className='artical-top'>
-                <span className='tag'>Article</span>
-                <span>
-                  {moment(historyEvent.event_date_utc.substring(0, 10)).format(
-                    'MMM YYYY'
-                  )}
-                </span>
+      <section className='timeline-section'>
+        <div className='timeline-items'>
+          {historicalEvents.map((history) => (
+            <div className='timeline-item'>
+              <div className='timeline-dot'></div>
+              <div className='timeline-date'>
+                {moment(history.event_date_utc.substring(0, 10)).format(
+                  'MMM YYYY'
+                )}
               </div>
+              <div className='timeline-content'>
+                <h3>{history.title}</h3>
+                <p>{history.details}</p>
+                {history.links.wikipedia && (
+                  <a
+                    href={history.links.wikipedia}
+                    target='_blank'
+                    rel='noreferrer'>
+                    <img src={Wiki} alt='' />
+                  </a>
+                )}
 
-              <div className='article-desc'>
-                <h1>{historyEvent.title}</h1>
-                <p>{historyEvent.details.substring(0, 120) + '...'}</p>
+                {history.links.reddit && (
+                  <a
+                    href={history.links.reddit}
+                    target='_blank'
+                    rel='noreferrer'>
+                    <img src={Reddit} alt='' />
+                  </a>
+                )}
+
+                {history.links.article && (
+                  <a
+                    href={history.links.article}
+                    target='_blank'
+                    rel='noreferrer'>
+                    <img src={ArticlePng} alt='' />
+                  </a>
+                )}
               </div>
-
-              <div>
-                <ul
-                  className={`article-links ${
-                    historyEvent.links.length > 2 ? 'space-eve' : 'space-btw'
-                  }`}>
-                  <li>
-                    {historyEvent.links.reddit && (
-                      <i className='fab fa-reddit'></i>
-                    )}
-                  </li>
-                  <li>
-                    {historyEvent.links.article && (
-                      <i className='far fa-newspaper'></i>
-                    )}
-                  </li>
-                  <li>
-                    {historyEvent.links.wikipedia && (
-                      <i className='fab fa-wikipedia-w'></i>
-                    )}
-                  </li>
-                </ul>
-              </div>
-            </article>
-
-            <Link to={`/historical-event/${historyEvent.id}`}>
-              <button className='btn-secondary'>Read More</button>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </section>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }
 

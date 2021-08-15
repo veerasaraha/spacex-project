@@ -21,7 +21,6 @@ const Rockets = () => {
     ...allRockets,
     ...allRockets,
   ]
-  console.log(demoRockets.length)
 
   return (
     <section className='rockets'>
@@ -33,23 +32,21 @@ const Rockets = () => {
         {demoRockets.map((rocket) => (
           <div className='rocket-card'>
             <article>
-              <div className='rocket-card-img'>
-                <img src={rocket && rocket.flickr_images[0]} alt='' />
-              </div>
+              <img src={rocket && rocket.flickr_images[0]} alt='' />
 
-              <div className='rocket-card-details'>
+              <div className='rocket-card-top'>
                 <h1>{rocket && rocket.rocket_name}</h1>
                 <span>{moment(rocket.first_flight).format('MMM YYYY')}</span>
               </div>
 
-              <div className='rocket-description'>
-                <p>
-                  <p>{rocket && rocket.description}</p>
-                </p>
-              </div>
-              <Link to={rocket && `/rocket/${rocket.rocket_id}`}>
-                <button className='btn-secondary'>Read More</button>
-              </Link>
+              <p>
+                {rocket && rocket.description.substring(0, 100) + '...'}
+                <Link
+                  className='rocket-link'
+                  to={rocket && `/rocket/${rocket.rocket_id}`}>
+                  Read More
+                </Link>
+              </p>
             </article>
           </div>
         ))}

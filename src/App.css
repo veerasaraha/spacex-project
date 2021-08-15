@@ -4,6 +4,19 @@
   font-family: 'Poppins', sans-serif;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
+html {
+  background-color: #f9f9fb;
+}
+
+a {
+  text-decoration: none;
+}
+
 .btn-primary {
   display: inline-block;
   text-decoration: none;

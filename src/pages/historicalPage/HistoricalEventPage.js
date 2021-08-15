@@ -20,11 +20,7 @@ const HistoricalEventPage = () => {
   }, [id])
 
   console.log(hisoricalEvent)
-  return (
-    <div className='historical-page'>
-      <span>Historical Event Page</span>
-    </div>
-  )
+  return <section className='wrapper'></section>
 }
 
 export default HistoricalEventPage

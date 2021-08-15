@@ -1,4 +1,14 @@
 .rocket-page {
-  margin: 0 auto;
+  margin: 10px auto;
   width: 1024px;
+}
+
+.rocket-img img {
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+}
+
+.rocket-details {
+  border: 1px solid #333;
 }
