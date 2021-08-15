@@ -8,7 +8,7 @@ import './Home.css'
 const Home = () => {
   const [companyInfo, setCompanyInfo] = useState({})
 
-  const { founded, summary } = companyInfo
+  const { summary } = companyInfo
 
   useEffect(() => {
     const fetchCompanyInfo = async () => {
@@ -22,40 +22,78 @@ const Home = () => {
 
   console.log(companyInfo)
   return (
-    <div className='home-wrapper'>
-      <div className='home-top'>
-        <div className='home-logo'>
-          <img src={SpacexSvg} title='spaceX' alt='spacX-logo' />
-        </div>
+    <>
+      <section className='header'>
+        <nav>
+          <Link to='/' className='logo'>
+            <img src={SpacexSvg} alt='SpaceX' title='SpaceX' />
+          </Link>
 
-        <div className='home-nav-bar'>
-          <ul className='home-nav-bar-links'>
-            <li className='home-nav-bar-item'>
-              <Link to='/history'>History</Link>
-            </li>
-            <li className='home-nav-bar-item'>
-              <Link to='/launches'>Launches</Link>
-            </li>
-            <li className='home-nav-bar-item'>
-              <Link to='/rockets'>Rockets</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className='home-bottom'>
-        <section className='home-section-company-info'>
-          {/* <div className='company-info-box-one'>
-            <div className='company-founded-name'>{name}</div>
-          </div> */}
-          <div className='company-info-box-two'>
-            <div className='company-founded-text'>{founded}</div>
-            <hr className='line' />
-            <div className='company-founded-desc'>{summary}</div>
+          <div className='nav-links'>
+            <i className='fas fa-times'></i>
+            <ul>
+              <li>
+                <Link to='/history'>History</Link>
+              </li>
+              <li>
+                <Link to='/launches'>Launches</Link>
+              </li>
+              <li>
+                <Link to='/rockets'>Rockets</Link>
+              </li>
+            </ul>
           </div>
-        </section>
-      </div>
-    </div>
+          <i className='fas fa-bars'></i>
+        </nav>
+
+        <div className='context-text'>
+          <h1>world's most high-profile commercial spaceflight company</h1>
+          <p>{summary}</p>
+          <Link to='/'>
+            <button className='btn-primary'>Know More</button>
+          </Link>
+        </div>
+      </section>
+
+      <section className='features'>
+        <h1>About us</h1>
+        <p>
+          Space Exploration Technologies is a space-transportation startup
+          company founded by Elon Musk. SpaceX designs, manufactures, and
+          launches advanced rockets and spacecraft.
+          <br /> SpaceX develops crew and cargo capsules, engines, cryogenic
+          tank structures, avionics, equipment, guidance, and control software.
+          The company is developing the partially reusablelaunch vehicles Falcon
+          1 and Falcon 9.
+        </p>
+
+        <div className='feature-row'>
+          <div className='feature-col'>
+            <h3>Founding</h3>
+            <p>
+              SpaceX was founded in 2002 by Elon Musk with the goal of reducing
+              space transportation costs to enable the colonization of Mars.
+            </p>
+          </div>
+
+          <div className='feature-col'>
+            <h3>Headquarters</h3>
+            <p>
+              SpaceX is headquartered in Hawthorne, California, which also
+              serves as its primary manufacturing plant.
+            </p>
+          </div>
+
+          <div className='feature-col'>
+            <h3>Our Vision</h3>
+            <p>
+              To revolutionize space transportation, with the ultimate goal of
+              making life multiplanetary.
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }
 
