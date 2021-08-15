@@ -1,10 +1,10 @@
 import axios from 'axios'
+import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Rockets.css'
 
 const Rockets = () => {
-  const [index, setIndex] = useState(0)
   const [allRockets, setAllRockets] = useState([])
 
   useEffect(() => {
@@ -15,55 +15,46 @@ const Rockets = () => {
     fetchAllRockets()
   }, [])
 
-  const rocket = allRockets[index]
+  const demoRockets = [
+    ...allRockets,
+    ...allRockets,
+    ...allRockets,
+    ...allRockets,
+  ]
+  console.log(demoRockets.length)
+
   return (
-    <div className='rockets'>
-      <div className='rockets-wrapper'>
-        <div className='rockets-title'>
-          <h2>Rockets</h2>
-        </div>
-
-        <div className='rockets-slideshow'>
-          {index > 0 && (
-            <div
-              className='rocket-left'
-              onClick={() => {
-                index > 0 && setIndex(index - 1)
-              }}>
-              <i className='fas fa-arrow-left'></i>
-            </div>
-          )}
-
-          <div className='rocket-container'>
-            <div className='rocket-image'>
-              <img src={rocket && rocket.flickr_images[0]} alt='' />
-            </div>
-            <div className='rocket-details'>
-              <h2>{rocket && rocket.rocket_name}</h2>
-              <div>
-                <span>{rocket && rocket.first_flight}</span>
-                <span>{rocket && rocket.country}</span>
-              </div>
-              <p>{rocket && rocket.description}</p>
-            </div>
-
-            <Link to={rocket && `/rocket/${rocket.rocket_id}`}>
-              <button>Read More</button>
-            </Link>
-          </div>
-
-          {index < allRockets.length - 1 && (
-            <div
-              className='rocket-right'
-              onClick={() => {
-                index < allRockets.length - 1 && setIndex(index + 1)
-              }}>
-              <i className='fas fa-arrow-right'></i>
-            </div>
-          )}
-        </div>
+    <section className='rockets'>
+      <div className='rocket-title'>
+        <h1>Rockets</h1>
       </div>
-    </div>
+
+      <div className='rocket-cards'>
+        {demoRockets.map((rocket) => (
+          <div className='rocket-card'>
+            <article>
+              <div className='rocket-card-img'>
+                <img src={rocket && rocket.flickr_images[0]} alt='' />
+              </div>
+
+              <div className='rocket-card-details'>
+                <h1>{rocket && rocket.rocket_name}</h1>
+                <span>{moment(rocket.first_flight).format('MMM YYYY')}</span>
+              </div>
+
+              <div className='rocket-description'>
+                <p>
+                  <p>{rocket && rocket.description}</p>
+                </p>
+              </div>
+              <Link to={rocket && `/rocket/${rocket.rocket_id}`}>
+                <button className='btn-secondary'>Read More</button>
+              </Link>
+            </article>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
 

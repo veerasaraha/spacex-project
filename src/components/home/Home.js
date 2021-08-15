@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import SpacexSvg from '../../spacex.svg'
+import SpacexSvg from '../../images/PngItem_6781246.png'
 
 import './Home.css'
 
@@ -20,14 +20,15 @@ const Home = () => {
     fetchCompanyInfo()
   }, [])
 
-  console.log(companyInfo)
   return (
     <>
       <section className='header'>
         <nav>
-          <Link to='/' className='logo'>
-            <img src={SpacexSvg} alt='SpaceX' title='SpaceX' />
-          </Link>
+          <div className='image-conatiner'>
+            <Link to='/' className='logo'>
+              <img src={SpacexSvg} alt='SpaceX' title='SpaceX' />
+            </Link>
+          </div>
 
           <div className='nav-links'>
             <i className='fas fa-times'></i>

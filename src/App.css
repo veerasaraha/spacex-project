@@ -3,3 +3,39 @@
   padding: 0;
   font-family: 'Poppins', sans-serif;
 }
+
+.btn-primary {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 12px 32px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn-primary:hover {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #333;
+}
+
+.btn-secondary {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #333;
+  padding: 12px 32px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn-secondary:hover {
+  border: 1px solid #333;
+  background: #fafafa;
+  color: #333;
+}

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './History.css'
@@ -16,7 +17,7 @@ const History = () => {
   }, [])
 
   return (
-    <div className='history'>
+    <section className='history'>
       <div className='history-title'>
         <h1>Historical Events</h1>
       </div>
@@ -24,12 +25,20 @@ const History = () => {
       <div className='historical-events'>
         {historicalEvents.map((historyEvent) => (
           <div key={historyEvent.id} className='history-event'>
+            {console.log(historyEvent.event_date_utc.substring(0, 10))}
             <article>
-              <div className='artical-detail'>
-                <p>
-                  {historyEvent &&
-                    historyEvent.details.substring(0, 150) + '...'}
-                </p>
+              <div className='artical-top'>
+                <span className='tag'>Article</span>
+                <span>
+                  {moment(historyEvent.event_date_utc.substring(0, 10)).format(
+                    'MMM YYYY'
+                  )}
+                </span>
+              </div>
+
+              <div className='article-desc'>
+                <h1>{historyEvent.title}</h1>
+                <p>{historyEvent.details.substring(0, 120) + '...'}</p>
               </div>
 
               <div>
@@ -54,19 +63,15 @@ const History = () => {
                   </li>
                 </ul>
               </div>
-              <span className='article-published'>
-                {historyEvent.event_date_utc.substring(0, 10)}
-              </span>
-              <h3>{historyEvent.title}</h3>
             </article>
 
             <Link to={`/historical-event/${historyEvent.id}`}>
-              <button>Read More</button>
+              <button className='btn-secondary'>Read More</button>
             </Link>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

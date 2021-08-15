@@ -4,16 +4,32 @@
 }
 
 .launch-title {
-  text-align: center;
+  display: flex;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   margin: 10px;
-  border: 1px solid #333;
+}
+
+.launch-title h1 {
+  font-weight: 400;
+}
+
+.launch-title h1::after {
+  content: '';
+  border: 2px solid #333;
+  display: block;
+  margin: 5px auto;
+  border-radius: 10%;
 }
 
 .launch-cards {
+  margin-top: 30px;
+  margin-bottom: 30px;
   padding: 10px;
-  margin: 10px;
   row-gap: 20px;
+  background: #fcfaf8;
   column-gap: 5px;
   display: flex;
   align-items: center;
@@ -22,8 +38,9 @@
 
 .launch-card {
   width: 100%;
-  height: 150px;
+  height: auto;
   border: 1px solid #333;
+  border-radius: 10px;
 }
 
 .launch-card-top {
@@ -32,11 +49,72 @@
   justify-content: space-between;
 }
 
+.launch-card-top h1 {
+  font-size: 30px;
+  margin: 15px;
+  font-weight: 300;
+}
+
+.launch-card-top span {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.launch-details h2 {
+  margin: 10px;
+  font-weight: 500;
+}
+
+.launch-details p {
+  margin: 10px;
+}
+
+.launch-btn {
+  margin: 15px;
+}
+
 .pagination {
   display: flex;
   margin: 15px;
   padding: 15px;
   align-items: center;
+  color: #fff;
+  list-style: none;
   justify-content: space-evenly;
   cursor: pointer;
+}
+
+.pagination li span {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  color: #333;
+}
+
+@media screen and (max-width: 480px) {
+  .launch {
+    width: 100%;
+  }
+
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    column-gap: 20px;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+    color: #fff;
+    list-style: none;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .pagination li span {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    color: #333;
+  }
 }

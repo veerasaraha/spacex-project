@@ -3,6 +3,7 @@ import axios from 'axios'
 import _loadash from 'lodash'
 import './Launches.css'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const Launches = () => {
   const [allLaunches, setAllLaunches] = useState([])
@@ -30,7 +31,7 @@ const Launches = () => {
   }
 
   return (
-    <div className='launch'>
+    <section className='launch'>
       <div className='launch-title'>
         <h1>SpaceX Launches</h1>
       </div>
@@ -40,16 +41,21 @@ const Launches = () => {
           <div className='launch-card' key={launch.mission_name}>
             <article>
               <div className='launch-card-top'>
-                <h2>{launch.mission_name}</h2>
-                <span>{launch.launch_date_utc.substring(0, 10)}</span>
+                <h1>{launch.mission_name}</h1>
+                <span>
+                  {moment(launch.launch_date_utc.substring(0, 10)).format(
+                    'MMM YYYY'
+                  )}
+                </span>
               </div>
+
               <div className='launch-details'>
                 <h2>{launch.details && launch.details.substring(0, 250)}</h2>
-                <p>{launch.launch_site.site_name_long}</p>
+                <p>Launch From : {launch.launch_site.site_name_long}</p>
               </div>
             </article>
-            <Link to={`/launch/${launch.flight_number}`}>
-              <button>Read More</button>
+            <Link to={`/launch/${launch.flight_number}`} claaas='launch-btn'>
+              <button className='btn-secondary launch-btn'>Read More</button>
             </Link>
           </div>
         ))}
@@ -58,18 +64,15 @@ const Launches = () => {
       <>
         <ul className='pagination'>
           {pages.map((page) => (
-            <li
-              key={page}
-              style={
-                page === cuurentPage ? { color: 'green' } : { color: 'red' }
-              }
-              onClick={() => pagination(page)}>
-              <span>{page}</span>
+            <li key={page} onClick={() => pagination(page)}>
+              <span style={page === cuurentPage ? { color: '#1864ab' } : null}>
+                {page}
+              </span>
             </li>
           ))}
         </ul>
       </>
-    </div>
+    </section>
   )
 }
 

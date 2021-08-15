@@ -77,24 +77,6 @@ nav img {
   color: #fff;
 }
 
-.btn-primary {
-  display: inline-block;
-  text-decoration: none;
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 12px 32px;
-  background: transparent;
-  position: relative;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.btn-primary:hover {
-  border: 1px solid #fff;
-  background: #fff;
-  color: #333;
-}
-
 nav .fas {
   display: none;
 }
