@@ -4,11 +4,85 @@
 }
 
 .rocket-img img {
-  margin: 50px auto;
+  margin: 100px auto;
   display: flex;
   align-items: center;
 }
 
-.rocket-details {
-  border: 1px solid #333;
+.box {
+  border-radius: 20px;
+  line-height: 30px;
+  background-color: #fff;
+  margin: 15px;
+  padding: 10px;
+  box-shadow: 8px 5px 20px #d1d5db;
+}
+
+.rocket-details p {
+  margin: 10px;
+}
+
+.rocket-details-top {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rocket-overview {
+  display: flex;
+  flex-direction: row;
+  align-items: normal;
+  justify-content: center;
+}
+
+.rocket-overview > div,
+.rocket-engine > div,
+.rocket-stages > div {
+  border-radius: 20px;
+  text-transform: capitalize;
+  line-height: 30px;
+  background-color: #fff;
+  margin: 15px;
+  padding: 10px;
+  width: 300px;
+  box-shadow: 8px 5px 20px #d1d5db;
+  animation: fadeIn 1s linear;
+}
+
+.rocket-overview,
+.rocket-engine,
+.rocket-stages > div h1 {
+  text-align: center;
+}
+
+.rocket-overview table,
+.rocket-engine table,
+.rocket-stages table {
+  border-spacing: 10px;
+}
+
+.rocket-overview table td,
+.rocket-engine table td,
+.rocket-stages table td {
+  padding: 5px;
+}
+
+.rocket-engine {
+  display: flex;
+  flex-direction: row;
+  align-items: normal;
+  justify-content: center;
+}
+
+.rocket-engine > div,
+.rocket-stages > div {
+  width: 100%;
+}
+
+.rocket-stages {
+  display: flex;
+  flex-direction: row;
+  align-items: normal;
+  justify-content: center;
 }

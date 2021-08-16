@@ -13,6 +13,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  opacity: 1;
+  animation: fadeinout 2s linear;
 }
 
 nav img {
@@ -111,7 +113,7 @@ nav .fas {
 
 .feature-col {
   flex-basis: 30%;
-  background: #fff3f3;
+  background: #fee2e2;
   border-radius: 10px;
   margin-bottom: 5%;
   padding: 20px 12px;
@@ -129,26 +131,16 @@ nav .fas {
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (max-width: 480px) {
-  .header {
-    width: 100vw;
-    height: 100vh;
-  }
-
+/* Smartphones Mobiles (Portrait) */
+@media (min-width: 320px) and (max-width: 480px) {
   nav {
     padding: 0em;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
   nav img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 300px;
   }
 
   .nav-links {
@@ -157,28 +149,8 @@ nav .fas {
     padding: 5px;
   }
 
-  .nav-links ul li {
-    list-style: none;
-    margin: 10px;
-    display: inline-block;
-    padding: 0px 0px;
-    position: relative;
-  }
-
-  .nav-links ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-  }
-
   .context-text {
     width: 100%;
-    color: #fff;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   .context-text h1 {
@@ -189,12 +161,9 @@ nav .fas {
   .context-text p {
     width: 90%;
     margin: 10px auto;
-    font-size: 15px;
     font-weight: 300;
-    color: #fff;
   }
 
-  /* Features */
   .features {
     width: 100%;
     margin: 50px auto;
@@ -202,41 +171,58 @@ nav .fas {
     padding: 0px;
   }
 
-  .features h1 {
-    font-weight: 700;
-  }
-
   .features p {
-    width: 70%;
+    width: 80%;
     margin: 10px auto;
-    color: #333;
-    font-size: 14px;
-    font-weight: 300;
     line-height: 25px;
-    padding: 0px;
   }
 
   .feature-row {
-    margin-top: 10%;
     display: flex;
     flex-direction: column;
     margin: 10px;
-    justify-content: center;
+  }
+}
+
+/*  Tablets, Mobiles (Landscape) */
+@media (min-width: 481px) and (max-width: 768px) {
+  nav {
+    padding: 2% 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeinout 2s linear;
   }
 
-  .feature-col {
-    flex-basis: 100%;
-    background: #fff3f3;
-    border-radius: 10px;
-    margin-bottom: 5%;
-    padding: 0px 0px;
-    box-sizing: border-box;
-    transition: 0.5s;
+  nav img {
+    display: block;
   }
 
-  .feature-col h3 {
-    text-align: center;
-    font-weight: 600;
+  .nav-links {
+    margin: 10px;
+    row-gap: 10px;
+    padding: 5px;
+  }
+
+  .context-text {
+    width: 100%;
+  }
+
+  .features {
+    padding: 0px;
+    width: 100%;
+  }
+
+  .features p {
+    width: 80%;
     margin: 10px auto;
+    line-height: 25px;
+  }
+
+  .feature-row {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
   }
 }

@@ -27,7 +27,7 @@ const History = () => {
       <section className='timeline-section'>
         <div className='timeline-items'>
           {historicalEvents.map((history) => (
-            <div className='timeline-item'>
+            <div className='timeline-item' key={history.id}>
               <div className='timeline-dot'></div>
               <div className='timeline-date'>
                 {moment(history.event_date_utc.substring(0, 10)).format(
