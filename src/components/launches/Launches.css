@@ -40,8 +40,8 @@
 .launch-card {
   width: 100%;
   height: auto;
-  border: 1px solid #333;
   border-radius: 10px;
+  background: #fff;
 }
 
 .launch-card-top {
@@ -71,25 +71,42 @@
 }
 
 .launch-btn {
+  font-size: 16px;
   margin: 15px;
+  border: none;
+  background-color: #5aaeb0;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.launch-btn i {
+  font-size: 15px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.launch-btn:hover {
+  outline: none;
+  background-color: #f1f3f5;
+  border: none;
 }
 
 .pagination {
   display: flex;
-  margin: 15px;
+  margin: 20px;
   padding: 15px;
+  height: 50px;
   align-items: center;
-  color: #fff;
   list-style: none;
   justify-content: space-evenly;
   cursor: pointer;
 }
 
-.pagination li span {
-  border: 1px solid #ccc;
+.pagination a {
+  border: 0px solid #ccc;
   padding: 10px;
   border-radius: 10px;
-  color: #333;
+  color: #5aaeb0;
 }
 
 @media screen and (max-width: 480px) {

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Wiki from '../../images/icons8-wikipedia-240.png'
 import Reddit from '../../images/icons8-reddit-240.png'
 import ArticlePng from '../../images/icons8-news-240.png'

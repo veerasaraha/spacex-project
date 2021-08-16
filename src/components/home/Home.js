@@ -57,7 +57,7 @@ const Home = () => {
       </section>
 
       <section className='features'>
-        <h1>About us</h1>
+        <h1>What we do</h1>
         <p>
           Space Exploration Technologies is a space-transportation startup
           company founded by Elon Musk. SpaceX designs, manufactures, and

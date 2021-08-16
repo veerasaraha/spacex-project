@@ -2,3 +2,101 @@
   margin: 50px auto;
   width: 1024px;
 }
+
+.launch-title-name {
+  border-radius: 20px;
+  line-height: 30px;
+  background-color: #fff;
+  margin: 15px;
+  padding: 10px;
+  box-shadow: 8px 5px 20px #d1d5db;
+}
+
+.launch-title-name h1 {
+  text-align: center;
+  font-weight: 500;
+}
+
+.launch-title-name tr td:nth-child(odd) {
+  font-size: 20px;
+  font-weight: 400;
+  width: 200px;
+}
+
+.launch-rocket-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.launch-rocket-info > div {
+  background-color: #fff;
+  width: 100%;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 8px 5px 20px #d1d5db;
+}
+.launch-rocket-info > div h1 {
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.launch-rocket-info table {
+  border-spacing: 15px;
+}
+
+.launch-rocket-info table td {
+  padding: 5px;
+}
+
+.launch-deatils {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.launch-deatils > div {
+  background-color: #fff;
+  width: 100%;
+  height: 160px;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 8px 5px 20px #d1d5db;
+  text-align: center;
+}
+
+.launch-deatils table {
+  border-spacing: 15px;
+}
+
+.launch-social-links {
+  background-color: #fff;
+
+  height: 100px;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 8px 5px 20px #d1d5db;
+}
+
+.launch-social-links h1 {
+  text-align: center;
+}
+
+.launch-social-links ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.launch-social-links a {
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}

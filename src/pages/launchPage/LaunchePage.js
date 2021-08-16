@@ -1,7 +1,12 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Wiki from '../../images/icons8-wikipedia-240.png'
+import Reddit from '../../images/icons8-reddit-240.png'
+import ArticlePng from '../../images/icons8-news-240.png'
+import youtube from '../../images/icons8-youtube-play-button-240.png'
 import './LaunchePage.css'
+import moment from 'moment'
 
 const LaunchePage = () => {
   const [launchInfo, setLaunchInfo] = useState({})
@@ -19,25 +24,39 @@ const LaunchePage = () => {
     fetchLaunchDetail()
   }, [id])
 
-  console.log(launchInfo)
   return (
     <section className='launch-page'>
       <div className='launch-title-name'>
+        <h1>{launchInfo && launchInfo.mission_name}</h1>
+
         <table>
-          <h1>Launch {launchInfo && launchInfo.mission_name}</h1>
           <tr>
             <td>Name</td>
             <td>{launchInfo && launchInfo.mission_name}</td>
           </tr>
-
+          {/* <hr className='line' /> */}
           <tr>
             <td>Year of launch</td>
-            <td>{launchInfo && `${launchInfo.is_tentative}`}</td>
+            <td>{launchInfo && `${launchInfo.launch_year}`}</td>
           </tr>
 
           <tr>
+            <td>Launch Success</td>
+            <td>{launchInfo && `${launchInfo.launch_success}`}</td>
+          </tr>
+
+          {launchInfo.launch_success === false && (
+            <tr>
+              <td>Failure Reason</td>
+              <td>
+                {launchInfo && `${launchInfo.launch_failure_details.reason}`}
+              </td>
+            </tr>
+          )}
+
+          <tr>
             <td>Tentaive</td>
-            <td>{launchInfo && launchInfo.launch_year}</td>
+            <td>{launchInfo && `${launchInfo.is_tentative}`}</td>
           </tr>
           <tr>
             <td>Upcoming</td>
@@ -45,75 +64,78 @@ const LaunchePage = () => {
           </tr>
 
           <tr>
-            <td>Local Date</td>
-            <td>{launchInfo && launchInfo.launch_date_local}</td>
-          </tr>
-
-          <tr>
-            <td>UTC Date</td>
-            <td>{launchInfo && launchInfo.launch_date_utc}</td>
+            <td>Date</td>
+            <td>
+              {launchInfo &&
+                moment(launchInfo.launch_date_local).format(
+                  'MMMM Do YYYY, h:mm:ss a'
+                )}
+            </td>
           </tr>
         </table>
       </div>
 
       <div className='launch-rocket-info'>
-        <table>
+        <div>
           <h1>Launch Rocket Info</h1>
-          <tr>
-            <td>Name</td>
-            <td>{launchInfo.rocket && launchInfo.rocket.rocket_name}</td>
-          </tr>
-          <tr>
-            <td>Type</td>
-            <td>{launchInfo.rocket && launchInfo.rocket.rocket_type}</td>
-          </tr>
-          <tr>
-            <td>Id</td>
-            <td>{launchInfo.rocket && launchInfo.rocket.rocket_id}</td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>{launchInfo.rocket && launchInfo.rocket.rocket_name}</td>
-          </tr>
-        </table>
-
-        <table>
-          <h1>First Stage Cores</h1>
-          <tr>
-            <td>Resuesd</td>
-            <td>
-              {launchInfo.rocket &&
-                `${launchInfo.rocket.first_stage.cores[0].reused}`}
-            </td>
-          </tr>
-
-          <tr>
-            <td>Landing success</td>
-            <td>
-              {launchInfo.rocket &&
-                `${launchInfo.rocket.first_stage.cores[0].land_success}`}
-            </td>
-          </tr>
-
-          <tr>
-            <td>Landing vechicle</td>
-            <td>
-              {launchInfo.rocket &&
-                `${launchInfo.rocket.first_stage.cores[0].landing_vehicle}`}
-            </td>
-          </tr>
-
-          <tr>
-            <td>Landing type</td>
-            <td>
-              {launchInfo.rocket &&
-                `${launchInfo.rocket.first_stage.cores[0].landing_type}`}
-            </td>
-          </tr>
-        </table>
+          <table>
+            <tr>
+              <td>Name</td>
+              <td>{launchInfo.rocket && launchInfo.rocket.rocket_name}</td>
+            </tr>
+            <tr>
+              <td>Type</td>
+              <td>{launchInfo.rocket && launchInfo.rocket.rocket_type}</td>
+            </tr>
+            <tr>
+              <td>Id</td>
+              <td>{launchInfo.rocket && launchInfo.rocket.rocket_id}</td>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td>{launchInfo.rocket && launchInfo.rocket.rocket_name}</td>
+            </tr>
+          </table>
+        </div>
 
         <div>
-          {' '}
+          <h1>First Stage Cores</h1>
+          <table>
+            <tr>
+              <td>Resuesd</td>
+              <td>
+                {launchInfo.rocket &&
+                  `${launchInfo.rocket.first_stage.cores[0].reused}`}
+              </td>
+            </tr>
+
+            <tr>
+              <td>Landing success</td>
+              <td>
+                {launchInfo.rocket &&
+                  `${launchInfo.rocket.first_stage.cores[0].land_success}`}
+              </td>
+            </tr>
+
+            <tr>
+              <td>Landing vechicle</td>
+              <td>
+                {launchInfo.rocket &&
+                  `${launchInfo.rocket.first_stage.cores[0].landing_vehicle}`}
+              </td>
+            </tr>
+
+            <tr>
+              <td>Landing type</td>
+              <td>
+                {launchInfo.rocket &&
+                  `${launchInfo.rocket.first_stage.cores[0].landing_type}`}
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
           <h1>Second Stage Payload</h1>
           <table>
             <tr>
@@ -154,78 +176,94 @@ const LaunchePage = () => {
         </div>
       </div>
 
-      <div>
-        <h1>About Launch site</h1>
-        <table>
-          <tr>
-            <td>Id</td>
-            <td>{launchInfo.launch_site && launchInfo.launch_site.site_id}</td>
-          </tr>
+      <div className='launch-deatils'>
+        <div>
+          <h1>About Launch site</h1>
+          <table>
+            <tr>
+              <td>Id</td>
+              <td>
+                {launchInfo.launch_site && launchInfo.launch_site.site_id}
+              </td>
+            </tr>
 
-          <tr>
-            <td>Name</td>
-            <td>
-              {launchInfo.launch_site && launchInfo.launch_site.site_name}
-            </td>
-          </tr>
+            <tr>
+              <td>Name</td>
+              <td>
+                {launchInfo.launch_site && launchInfo.launch_site.site_name}
+              </td>
+            </tr>
 
-          <tr>
-            <td>Long Name</td>
-            <td>
-              {launchInfo.launch_site && launchInfo.launch_site.site_name_long}
-            </td>
-          </tr>
-        </table>
-      </div>
+            <tr>
+              <td>Long Name</td>
+              <td>
+                {launchInfo.launch_site &&
+                  launchInfo.launch_site.site_name_long}
+              </td>
+            </tr>
+          </table>
+        </div>
 
-      <div className='launch-ships'>
-        <h1>Launch Ships</h1>
-        {launchInfo.ships &&
-          launchInfo.ships.map((ship) => (
-            <>
-              <ul>
-                <li>{ship}</li>
-              </ul>
-            </>
-          ))}
-      </div>
-
-      <div className='launch-success-info'>
-        <table>
-          <h1>Launch Success Deatils</h1>
-          <tr>
-            <td>Is success</td>
-            <td>{launchInfo && `${launchInfo.launch_success}`}</td>
-          </tr>
-        </table>
-      </div>
-
-      <div className='launch-failure-info'>
-        <table>
-          <h1>Launch Failure Deatils</h1>
-          <tr>
-            <td>Reason</td>
-            <td>
-              {launchInfo.launch_failure_details &&
-                launchInfo.launch_failure_details.reason}
-            </td>
-          </tr>
-        </table>
+        <div className='launch-ships'>
+          <h1>Launch Ships</h1>
+          {launchInfo.ships && launchInfo.ships.length === 0 ? (
+            <table>
+              <tr>
+                <td>No ships provided!</td>
+              </tr>
+            </table>
+          ) : (
+            launchInfo.ships &&
+            launchInfo.ships.map((ship) => (
+              <table>
+                <tr>
+                  <td>{ship}</td>
+                </tr>
+              </table>
+            ))
+          )}
+        </div>
       </div>
 
       <div className='launch-social-links'>
-        <table>
-          <h1>Launch Social Links</h1>
-          <tr>
-            <td>Wikipedia</td>
-            <td>{launchInfo.links && launchInfo.links.wikipedia}</td>
-          </tr>
+        <h1>Social Media</h1>
+        <ul>
+          <li>
+            <a
+              href={launchInfo.links && launchInfo.links.wikipedia}
+              target='_blank'
+              rel='noreferrer'>
+              <img src={Wiki} alt='' />
+            </a>
+          </li>
 
-          <tr>
-            <td>Youtube</td>
-            <td>{launchInfo.links && launchInfo.links.video_link}</td>
-          </tr>
-        </table>
+          <li>
+            <a
+              href={launchInfo.links && launchInfo.links.reddit_launch}
+              target='_blank'
+              rel='noreferrer'>
+              <img src={Reddit} alt='' />
+            </a>
+          </li>
+
+          <li>
+            <a
+              href={launchInfo.links && launchInfo.links.article_link}
+              target='_blank'
+              rel='noreferrer'>
+              <img src={ArticlePng} alt='' />
+            </a>
+          </li>
+
+          <li>
+            <a
+              href={launchInfo.links && launchInfo.links.video_link}
+              target='_blank'
+              rel='noreferrer'>
+              <img src={youtube} alt='' />
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
   )

@@ -55,22 +55,27 @@ const Launches = () => {
               </div>
             </article>
             <Link to={`/launch/${launch.flight_number}`} claaas='launch-btn'>
-              <button className='btn-secondary launch-btn'>Read More</button>
+              <button className='btn-secondary launch-btn'>
+                Read More
+                <i class='fas fa-arrow-right'></i>
+              </button>
             </Link>
           </div>
         ))}
       </div>
 
       <>
-        <ul className='pagination'>
+        <div className='pagination'>
           {pages.map((page) => (
-            <li key={page} onClick={() => pagination(page)}>
-              <span style={page === cuurentPage ? { color: '#1864ab' } : null}>
-                {page}
-              </span>
-            </li>
+            <a
+              href
+              style={page === cuurentPage ? { color: '#333' } : null}
+              key={page}
+              onClick={() => pagination(page)}>
+              {page}
+            </a>
           ))}
-        </ul>
+        </div>
       </>
     </section>
   )
