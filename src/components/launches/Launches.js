@@ -5,6 +5,7 @@ import './Launches.css'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { rocket } from '../../images/icons8-rocket-96.png'
+import Scroller from '../../pages/Scroller'
 
 const Launches = () => {
   const [allLaunches, setAllLaunches] = useState([])
@@ -30,6 +31,7 @@ const Launches = () => {
     const startIndex = (pageNo - 1) * 10
     setStartIndex(startIndex)
     setPageSize(pageNo * 10)
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }
 
   const filterQuery = (items) => {
@@ -48,45 +50,51 @@ const Launches = () => {
         <h1>SpaceX Launches</h1>
       </div>
 
-      <div className='launch-search'>
-        <i className='fas fa-search' aria-hidden='true'></i>
-        <input
-          type='text'
-          placeholder='Search by name'
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-      </div>
+      <Scroller showTop={true}>
+        <div className='launch-search'>
+          <i className='fas fa-search' aria-hidden='true'></i>
+          <input
+            type='text'
+            placeholder='Search by name'
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </div>
 
-      <div className='launch-cards'>
-        {filterQuery(allLaunches)
-          .slice(startIndex, pageSize)
-          .map((launch) => (
-            <div className='launch-card' key={launch.mission_name}>
-              <article>
-                <div className='launch-card-top'>
-                  <h1>{launch.mission_name}</h1>
-                  <span>
-                    {moment(launch.launch_date_utc.substring(0, 10)).format(
-                      'MMM YYYY'
-                    )}
-                  </span>
-                </div>
+        <div className='launch-cards'>
+          {filterQuery(allLaunches)
+            .slice(startIndex, pageSize)
+            .map((launch) => (
+              <div className='launch-card' key={launch.mission_name}>
+                <article>
+                  <div className='launch-card-top'>
+                    <h1>{launch.mission_name}</h1>
+                    <span>
+                      {moment(launch.launch_date_utc.substring(0, 10)).format(
+                        'MMM YYYY'
+                      )}
+                    </span>
+                  </div>
 
-                <div className='launch-details'>
-                  <h2>{launch.details && launch.details.substring(0, 250)}</h2>
-                  <p>Launch From : {launch.launch_site.site_name_long}</p>
-                </div>
-              </article>
-              <Link to={`/launch/${launch.flight_number}`} claaas='launch-btn'>
-                <button className='btn-secondary launch-btn'>
-                  Read More
-                  <i className='fas fa-arrow-right'></i>
-                </button>
-              </Link>
-            </div>
-          ))}
-      </div>
+                  <div className='launch-details'>
+                    <h2>
+                      {launch.details && launch.details.substring(0, 250)}
+                    </h2>
+                    <p>Launch From : {launch.launch_site.site_name_long}</p>
+                  </div>
+                </article>
+                <Link
+                  to={`/launch/${launch.flight_number}`}
+                  claaas='launch-btn'>
+                  <button className='btn-secondary launch-btn'>
+                    Read More
+                    <i className='fas fa-arrow-right'></i>
+                  </button>
+                </Link>
+              </div>
+            ))}
+        </div>
+      </Scroller>
 
       <>
         <div className='pagination'>

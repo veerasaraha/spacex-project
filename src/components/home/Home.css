@@ -208,6 +208,10 @@ nav .fas {
   .context-text {
     width: 100%;
   }
+  .context-text h1 {
+    font-size: 25px;
+    font-weight: 600;
+  }
 
   .features {
     padding: 0px;

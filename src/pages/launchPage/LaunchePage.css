@@ -121,8 +121,6 @@
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
-  .launch-page {
-  }
   .launch-rocket-info {
     display: flex;
     flex-direction: column;
