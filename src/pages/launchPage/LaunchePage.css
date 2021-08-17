@@ -1,6 +1,7 @@
 .launch-page {
   margin: 50px auto;
   width: 1024px;
+  animation: fadeIn 1.5s linear;
 }
 
 .launch-name {
@@ -44,6 +45,10 @@
   justify-content: center;
 }
 
+.launch-rocket-info div {
+  align-self: normal;
+}
+
 .launch-rocket-info > div,
 .launch-deatils > div {
   background-color: #fff;
@@ -59,7 +64,8 @@
   padding: 5px;
 }
 
-.launch-rocket-info table {
+.launch-rocket-info table,
+.launch-deatils table {
   border-spacing: 15px;
 }
 
@@ -81,10 +87,6 @@
 .launch-deatils > div h1,
 .launch-social-links h1 {
   text-align: center;
-}
-
-.launch-deatils table {
-  border-spacing: 15px;
 }
 
 .launch-social-links {
@@ -122,27 +124,111 @@
 .launch-page hr {
   width: 50px;
   height: 2px;
-  background-color: #334;
+  background-color: #5aaeb0;
   border-radius: 10px;
   margin: 0 auto;
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
-  .launch-rocket-info {
+  .launch-page {
+    margin: 50px auto;
+    width: 100%;
+  }
+  .launch-title-name {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
   }
-}
 
-@media (min-width: 320px) and (max-width: 480px) {
   .launch-rocket-info {
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+  }
+
+  .launch-rocket-info > div,
+  .launch-deatils > div {
+    background-color: #fff;
+    text-transform: capitalize;
+    width: 100%;
+    margin: 15px;
+    padding: 0px;
+    border-radius: 20px;
+    box-shadow: 8px 5px 230px #d1d5db;
+  }
+  .launch-rocket-info > div h1 {
+    text-align: center;
+    padding: 5px;
+  }
+
+  .launch-rocket-info table {
+    border-spacing: 15px;
+  }
+
+  .launch-deatils {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+  }
+
+  .launch-deatils > div {
+    height: auto;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .launch-page {
+    margin: 50px auto;
+    width: 100%;
+  }
+  .launch-title-name {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .launch-rocket-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .launch-rocket-info > div,
+  .launch-deatils > div {
+    background-color: #fff;
+    text-transform: capitalize;
+    width: 100%;
+    margin: 15px;
+    padding: 0px;
+    border-radius: 20px;
+    box-shadow: 8px 5px 230px #d1d5db;
+  }
+  .launch-rocket-info > div h1 {
+    text-align: center;
+    padding: 5px;
+  }
+
+  .launch-rocket-info div {
+    align-self: center;
+  }
+
+  .launch-rocket-info table {
+    border-spacing: 15px;
+  }
+
+  .launch-deatils {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+  }
+
+  .launch-deatils > div {
+    height: auto;
   }
 }

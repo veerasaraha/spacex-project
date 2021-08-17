@@ -1,6 +1,7 @@
 .history {
   margin: 0px auto;
   max-width: 1024px;
+  animation: fadeinout 1.5s linear;
 }
 
 .history-title {
@@ -34,8 +35,6 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-
-  animation: fadeinout 2s linear;
 }
 
 .timeline-items::before {

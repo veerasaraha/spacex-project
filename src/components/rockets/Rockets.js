@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import TitleCard from '../../services/TitleCard'
 import RocketCard from './RocketCard'
 import './Rockets.css'
@@ -34,6 +34,7 @@ const Rockets = () => {
 
       <div className='filter'>
         <h4>Filter by name</h4>
+        <i className='fas fa-filter'></i>
         <select
           name='select rocket'
           onChange={(e) => setFilterParam(e.target.value)}>

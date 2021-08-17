@@ -1,15 +1,17 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import SpacexSvg from '../../images/PngItem_6781246.png'
 import { AboutUs, NavItems } from '../../../src/services/aboutUsData'
-
+import Twitter from '../../images/icons8-twitter-96.png'
+import Website from '../../images/icons8-website-96.png'
 import './Home.css'
 
 const Home = () => {
   const [companyInfo, setCompanyInfo] = useState({})
+  const feature = useRef()
 
-  const { summary } = companyInfo
+  const { summary, links } = companyInfo
 
   useEffect(() => {
     const fetchCompanyInfo = async () => {
@@ -21,13 +23,21 @@ const Home = () => {
     fetchCompanyInfo()
   }, [])
 
+  const executeScroll = () => {}
+
   return (
     <>
       <section className='header'>
         <nav>
           <div className='image-conatiner'>
             <Link to='/' className='logo'>
-              <img src={SpacexSvg} alt='SpaceX' title='SpaceX' />
+              <img
+                src={SpacexSvg}
+                alt='SpaceX'
+                width=''
+                height=''
+                title='SpaceX'
+              />
             </Link>
           </div>
 
@@ -42,12 +52,9 @@ const Home = () => {
           </div>
         </nav>
 
-        <div className='context-text'>
+        <div className='context-text' ref={feature}>
           <h1>world's most high-profile commercial spaceflight company</h1>
           <p>{summary}</p>
-          <Link to='/'>
-            <button className='btn-primary'>Know More</button>
-          </Link>
         </div>
       </section>
 
@@ -63,7 +70,7 @@ const Home = () => {
           1 and Falcon 9.
         </p>
 
-        <div className='feature-row'>
+        <div className='feature-row' id='feature-row'>
           {AboutUs.map((data) => (
             <div className='feature-col' key={data.id}>
               <h3>{data.heading}</h3>
@@ -71,6 +78,26 @@ const Home = () => {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className='home-social-links'>
+        <ul>
+          {links && (
+            <li>
+              <a href={links.website} target='_blank' rel='noreferrer'>
+                <img src={Website} alt='' />
+              </a>
+            </li>
+          )}
+
+          {links && (
+            <li>
+              <a href={links.twitter} target='_blank' rel='noreferrer'>
+                <img src={Twitter} alt='' />
+              </a>
+            </li>
+          )}
+        </ul>
       </section>
     </>
   )

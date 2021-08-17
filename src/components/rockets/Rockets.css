@@ -1,6 +1,7 @@
 .rockets {
   margin: 0 auto;
   width: 1200px;
+  animation: fadeinout 1.5s linear;
 }
 
 .rocket-title {
@@ -29,7 +30,6 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  animation: fadeinout 2s linear;
 }
 
 .rocket-card {
@@ -45,6 +45,7 @@
   align-items: center;
   align-self: normal;
   position: relative;
+  animation: fadeinout 2s linear;
 }
 
 .rocket-card img {

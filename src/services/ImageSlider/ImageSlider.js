@@ -1,5 +1,5 @@
+import { useState } from 'react'
 import './ImageSlider.css'
-import React, { useState } from 'react'
 
 const ImageSlider = ({ images }) => {
   const length = images.length

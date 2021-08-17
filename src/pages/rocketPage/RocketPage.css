@@ -1,6 +1,7 @@
 .rocket-page {
   margin: 100px auto;
   width: 1024px;
+  animation: fadeinout 2s linear;
 }
 
 .box {
@@ -41,7 +42,6 @@
   padding: 10px;
   width: 300px;
   box-shadow: 8px 5px 20px #d1d5db;
-  animation: fadeIn 1s linear;
 }
 
 .rocket-overview > div h1,
@@ -53,7 +53,7 @@
 .rocket-page hr {
   width: 50px;
   height: 2px;
-  background-color: #334;
+  background-color: #5aaeb0;
   border-radius: 10px;
   margin: 2px auto;
 }
@@ -87,4 +87,64 @@
   flex-direction: row;
   align-items: normal;
   justify-content: center;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .rocket-page {
+    margin: 50px auto;
+    width: 100%;
+  }
+
+  .rocket-overview {
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .rocket-overview > div {
+    width: auto;
+  }
+
+  .rocket-engine {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+  }
+
+  .rocket-stages {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .rocket-page {
+    margin: 50px auto;
+    width: 100%;
+  }
+
+  .rocket-overview {
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .rocket-overview > div {
+    width: auto;
+  }
+
+  .rocket-engine {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+  }
+
+  .rocket-stages {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+  }
 }

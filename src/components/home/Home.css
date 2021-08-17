@@ -113,12 +113,18 @@ nav .fas {
 
 .feature-col {
   flex-basis: 30%;
-  background: #fee2e2;
+  background: #5aaeb0;
+  opacity: 0.8;
+  color: #fff;
   border-radius: 10px;
   margin-bottom: 5%;
   padding: 20px 12px;
   box-sizing: border-box;
   transition: 0.5s;
+}
+
+.feature-col p {
+  color: #fff;
 }
 
 .feature-col h3 {
@@ -128,7 +134,32 @@ nav .fas {
 }
 
 .feature-col:hover {
-  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+.home-social-links {
+  height: 100px;
+}
+
+.home-social-links ul {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.home-social-links ul li {
+  transition: all 0.5s ease-in-out;
+}
+
+.home-social-links ul img {
+  width: 50px;
+  height: 50px;
+}
+
+.home-social-links ul li:hover {
+  transform: scale(1.1);
 }
 
 /* Smartphones Mobiles (Portrait) */

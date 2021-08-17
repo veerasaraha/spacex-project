@@ -2,6 +2,7 @@
   margin: 0 auto;
   width: 1024px;
   background-color: #f9f9fb;
+  animation: fadeinout 1.5s linear;
 }
 
 .launch-title {
@@ -35,7 +36,6 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  animation: fadeinout 2s linear;
 }
 
 .launch-search {
@@ -131,19 +131,29 @@
   height: 50px;
   align-items: center;
   list-style: none;
-  justify-content: space-evenly;
-  cursor: pointer;
+  column-gap: 50px;
+  justify-content: center;
 }
 
-.pagination a {
+.pagination i {
   border: 0px solid #ccc;
   padding: rem-calc(10);
   border-radius: 10px;
+  color: #5aaeb0;
+  cursor: pointer;
+}
+
+.pagination i {
+  font-size: 30px;
   color: #5aaeb0;
 }
 
 .active {
   color: #333;
+}
+
+.hide {
+  display: none;
 }
 
 @media (min-width: 1281px) and (max-width: 1650px) {
