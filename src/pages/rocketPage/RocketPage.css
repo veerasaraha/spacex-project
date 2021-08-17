@@ -1,12 +1,6 @@
 .rocket-page {
-  margin: 10px auto;
-  width: 1024px;
-}
-
-.rocket-img img {
   margin: 100px auto;
-  display: flex;
-  align-items: center;
+  width: 1024px;
 }
 
 .box {
@@ -50,10 +44,18 @@
   animation: fadeIn 1s linear;
 }
 
-.rocket-overview,
-.rocket-engine,
+.rocket-overview > div h1,
+.rocket-engine > div h1,
 .rocket-stages > div h1 {
   text-align: center;
+}
+
+.rocket-page hr {
+  width: 50px;
+  height: 2px;
+  background-color: #334;
+  border-radius: 10px;
+  margin: 2px auto;
 }
 
 .rocket-overview table,

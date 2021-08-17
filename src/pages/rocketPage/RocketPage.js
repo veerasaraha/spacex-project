@@ -2,9 +2,10 @@ import axios from 'axios'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ImageSlider from '../ImageSlider'
+import ImageSlider from '../../services/ImageSlider/ImageSlider'
 
 import './RocketPage.css'
+import TableCard from './TableCard'
 
 const RocketPage = () => {
   const [rocketInfo, setRocketInfo] = useState({})
@@ -41,88 +42,58 @@ const RocketPage = () => {
       </div>
 
       <div className='rocket-overview '>
-        <div>
-          <h1>Overview</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>Height</td>
-                <td>
-                  {rocketInfo.height && rocketInfo.height.meters} m / {''}
-                  {rocketInfo.height && rocketInfo.height.feet} ft
-                </td>
-              </tr>
+        {rocketInfo.height && rocketInfo.diameter && rocketInfo.mass && (
+          <TableCard
+            heading='Overview'
+            timesTimeRednder={3}
+            propertyNamesList={['Height', 'Diameter', 'Mass']}
+            propertyValueList={[
+              `${rocketInfo.height.meters} m / ${
+                rocketInfo.height && rocketInfo.height.feet
+              } ft`,
+              `${rocketInfo.diameter.meters} m / ${
+                rocketInfo.diameter && rocketInfo.diameter.feet
+              } ft`,
+              `${converToValidNumberFormat(rocketInfo.mass.kg)}
+              kg / 
+              ${converToValidNumberFormat(rocketInfo.mass.lb)}
+              lbs`,
+            ]}
+          />
+        )}
 
-              <tr>
-                <td>Diameter</td>
-                <td>
-                  {rocketInfo.diameter && rocketInfo.diameter.meters} m / {''}
-                  <span>
-                    {rocketInfo.diameter && rocketInfo.diameter.feet} ft
-                  </span>
-                </td>
-              </tr>
+        {rocketInfo.engines && (
+          <>
+            <TableCard
+              heading='Engine'
+              timesTimeRednder={3}
+              propertyNamesList={['Type', 'Version', 'Layout']}
+              propertyValueList={[
+                rocketInfo.engines.type,
+                rocketInfo.engines.version,
+                rocketInfo.engines.layout,
+              ]}
+            />
+          </>
+        )}
 
-              <tr>
-                <td>Mass</td>
-                <td>
-                  {rocketInfo.mass &&
-                    converToValidNumberFormat(rocketInfo.mass.kg)}{' '}
-                  kg / {''}
-                  <span>
-                    {rocketInfo.mass &&
-                      converToValidNumberFormat(rocketInfo.mass.lb)}{' '}
-                    lbs
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div>
-          <h1>Engine</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>Type</td>
-                <td>{rocketInfo.engines && rocketInfo.engines.type}</td>
-              </tr>
-
-              <tr>
-                <td>Version</td>
-                <td>{rocketInfo.engines && rocketInfo.engines.version}</td>
-              </tr>
-
-              <tr>
-                <td>Version</td>
-                <td>{rocketInfo.engines && rocketInfo.engines.layout}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div>
-          <h1>Propollant</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>Propellant 1</td>
-                <td>{rocketInfo.engines && rocketInfo.engines.propellant_1}</td>
-              </tr>
-
-              <tr>
-                <td>Propellant 2</td>
-                <td>{rocketInfo.engines && rocketInfo.engines.propellant_2}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {rocketInfo.engines && (
+          <TableCard
+            heading='Propollant'
+            timesTimeRednder={2}
+            propertyNamesList={['Propellant 1', 'Propellant 2']}
+            propertyValueList={[
+              rocketInfo.engines.propellant_1,
+              rocketInfo.engines.propellant_1,
+            ]}
+          />
+        )}
       </div>
 
       <div className='rocket-engine'>
         <div className='rocket-payload'>
           <h1>Payload</h1>
+          <hr />
           {rocketInfo.payload_weights && (
             <>
               {rocketInfo.payload_weights.map((payload) => (
@@ -144,159 +115,61 @@ const RocketPage = () => {
           )}
         </div>
 
-        <div>
-          <h1>Thrust</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>Sea Level</td>
-                <td>
-                  {rocketInfo.engines && rocketInfo.engines.thrust_sea_level.kN}{' '}
-                  kN /{' '}
-                  <span>
-                    {rocketInfo.mass &&
-                      converToValidNumberFormat(
-                        rocketInfo.engines.thrust_sea_level.lbf
-                      )}{' '}
-                    lbf
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>Vacum</td>
-                <td>
-                  {rocketInfo.engines && rocketInfo.engines.thrust_vacuum.kN} kN
-                  /{' '}
-                  <span>
-                    {rocketInfo.mass &&
-                      converToValidNumberFormat(
-                        rocketInfo.engines.thrust_vacuum.lbf
-                      )}{' '}
-                    lbf
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {rocketInfo.engines && (
+          <TableCard
+            heading='Thrust'
+            timesTimeRednder={2}
+            propertyNamesList={['Sea Level', 'Vacum Level']}
+            propertyValueList={[
+              `${
+                rocketInfo.first_stage.thrust_sea_level.kN
+              } KN / ${converToValidNumberFormat(
+                rocketInfo.first_stage.thrust_sea_level.lbf
+              )} lbf`,
+              `${
+                rocketInfo.first_stage.thrust_vacuum.kN
+              } KN / ${converToValidNumberFormat(
+                rocketInfo.first_stage.thrust_vacuum.lbf
+              )} lbf`,
+            ]}
+          />
+        )}
       </div>
 
       <div className='rocket-stages'>
-        <div>
-          <h1>1st Stage</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>Reusable</td>
-                <td>
-                  {rocketInfo.first_stage &&
-                    `${rocketInfo.first_stage.reusable}`}
-                </td>
-              </tr>
+        {rocketInfo.first_stage && (
+          <TableCard
+            heading='1st Stage'
+            timesTimeRednder={3}
+            propertyNamesList={['Reusable', '# Engines', 'Fuel']}
+            propertyValueList={[
+              `${rocketInfo.first_stage.reusable}`,
+              rocketInfo.first_stage.engines,
+              `${rocketInfo.first_stage.fuel_amount_tons} Tons`,
+            ]}
+          />
+        )}
 
-              <tr>
-                <td># Engines</td>
-                <td>
-                  {rocketInfo.first_stage &&
-                    `${rocketInfo.first_stage.engines}`}
-                </td>
-              </tr>
-
-              <tr>
-                <td>Fuel</td>
-                <td>
-                  {rocketInfo.first_stage &&
-                    `${rocketInfo.first_stage.fuel_amount_tons}`}{' '}
-                  Tons
-                </td>
-              </tr>
-
-              <tr>
-                <td>Sea level thrust</td>
-                <td>
-                  {rocketInfo.first_stage &&
-                    rocketInfo.first_stage.thrust_sea_level.kN}{' '}
-                  kN / {''}
-                  <span>
-                    {rocketInfo.first_stage &&
-                      converToValidNumberFormat(
-                        rocketInfo.first_stage.thrust_sea_level.lbf
-                      )}{' '}
-                    lbf
-                  </span>
-                </td>
-              </tr>
-
-              <tr>
-                <td>Vacum level thrust</td>
-                <td>
-                  {rocketInfo.first_stage &&
-                    rocketInfo.first_stage.thrust_vacuum.kN}{' '}
-                  kN /{' '}
-                  <span>
-                    {rocketInfo.first_stage &&
-                      converToValidNumberFormat(
-                        rocketInfo.first_stage.thrust_vacuum.lbf
-                      )}{' '}
-                    lbf
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h1>2nd Stage</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>Reusable</td>
-                <td>
-                  {rocketInfo.second_stage &&
-                    `${rocketInfo.second_stage.reusable}`}
-                </td>
-              </tr>
-
-              <tr>
-                <td>Num of engines</td>
-                <td>
-                  {rocketInfo.second_stage &&
-                    `${rocketInfo.second_stage.engines}`}
-                </td>
-              </tr>
-
-              <tr>
-                <td>Fuel</td>
-                <td>
-                  {rocketInfo.second_stage &&
-                    `${rocketInfo.second_stage.fuel_amount_tons}`}{' '}
-                  Tons
-                </td>
-              </tr>
-
-              <tr>
-                <td>Burn Time</td>
-                <td>
-                  {rocketInfo.second_stage &&
-                    `${rocketInfo.second_stage.burn_time_sec} sec`}
-                </td>
-              </tr>
-
-              <tr>
-                <td>Thrust</td>
-                <td>
-                  {rocketInfo.second_stage && rocketInfo.second_stage.thrust.kN}{' '}
-                  kN /{' '}
-                  <span>
-                    {rocketInfo.second_stage &&
-                      rocketInfo.second_stage.thrust.lbf}{' '}
-                    lbf
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {rocketInfo.second_stage && (
+          <TableCard
+            heading='2nd Stage'
+            timesTimeRednder={5}
+            propertyNamesList={[
+              'Reusable',
+              '# Engines',
+              'Fuel',
+              'Burn Time',
+              'Thrust',
+            ]}
+            propertyValueList={[
+              `${rocketInfo.second_stage.reusable}`,
+              rocketInfo.second_stage.engines,
+              `${rocketInfo.second_stage.fuel_amount_tons} Tons`,
+              `${rocketInfo.second_stage.burn_time_sec} sec`,
+              `${rocketInfo.second_stage.thrust.kN} KN / ${rocketInfo.second_stage.thrust.lbf} Lbf`,
+            ]}
+          />
+        )}
       </div>
     </section>
   )

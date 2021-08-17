@@ -1,0 +1,46 @@
+.image-slider {
+  height: 500px;
+  width: auto;
+}
+.images-inner {
+  margin: auto;
+  height: 100%;
+  width: 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  animation: fadeIn 1s linear;
+}
+
+.images-inner .left {
+  flex: 5%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.images-inner .center {
+  flex: 90%;
+  height: 100%;
+}
+
+.images-inner .right {
+  flex: 5%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.images-inner .fas {
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}

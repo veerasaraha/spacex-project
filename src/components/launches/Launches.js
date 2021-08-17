@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import _loadash, { toUpper } from 'lodash'
+import _loadash from 'lodash'
 import './Launches.css'
-import { Link } from 'react-router-dom'
-import moment from 'moment'
-import { rocket } from '../../images/icons8-rocket-96.png'
-import Scroller from '../../pages/Scroller'
+import Scroller from '../../services/Scroller/Scroller'
+import LaunchCard from './LaunchCard'
+import TitleCard from '../../services/TitleCard'
 
 const Launches = () => {
   const [allLaunches, setAllLaunches] = useState([])
@@ -46,9 +45,7 @@ const Launches = () => {
 
   return (
     <section className='launch'>
-      <div className='launch-title'>
-        <h1>SpaceX Launches</h1>
-      </div>
+      <TitleCard title='Launches' className='launch' />
 
       <Scroller showTop={true}>
         <div className='launch-search'>
@@ -65,33 +62,7 @@ const Launches = () => {
           {filterQuery(allLaunches)
             .slice(startIndex, pageSize)
             .map((launch) => (
-              <div className='launch-card' key={launch.mission_name}>
-                <article>
-                  <div className='launch-card-top'>
-                    <h1>{launch.mission_name}</h1>
-                    <span>
-                      {moment(launch.launch_date_utc.substring(0, 10)).format(
-                        'MMM YYYY'
-                      )}
-                    </span>
-                  </div>
-
-                  <div className='launch-details'>
-                    <h2>
-                      {launch.details && launch.details.substring(0, 250)}
-                    </h2>
-                    <p>Launch From : {launch.launch_site.site_name_long}</p>
-                  </div>
-                </article>
-                <Link
-                  to={`/launch/${launch.flight_number}`}
-                  claaas='launch-btn'>
-                  <button className='btn-secondary launch-btn'>
-                    Read More
-                    <i className='fas fa-arrow-right'></i>
-                  </button>
-                </Link>
-              </div>
+              <LaunchCard launch={launch} key={launch.flight_number} />
             ))}
         </div>
       </Scroller>

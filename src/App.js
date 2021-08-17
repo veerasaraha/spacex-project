@@ -4,7 +4,6 @@ import History from './components/history/History'
 import Home from './components/home/Home'
 import Launches from './components/launches/Launches'
 import Rockets from './components/rockets/Rockets'
-import HistoricalEventPage from './pages/historicalPage/HistoricalEventPage'
 import LaunchePage from './pages/launchPage/LaunchePage'
 import RocketPage from './pages/rocketPage/RocketPage'
 
@@ -17,12 +16,6 @@ function App() {
           <Route exact path='/history' component={History} />
           <Route exact path='/launches' component={Launches} />
           <Route exact path='/rockets' component={Rockets} />
-
-          <Route
-            exact
-            path='/historical-event/:id'
-            component={HistoricalEventPage}
-          />
 
           <Route exact path='/launch/:id' component={LaunchePage} />
 

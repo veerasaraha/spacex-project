@@ -1,7 +1,7 @@
 import axios from 'axios'
-import moment from 'moment'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import TitleCard from '../../services/TitleCard'
+import RocketCard from './RocketCard'
 import './Rockets.css'
 
 const Rockets = () => {
@@ -20,11 +20,17 @@ const Rockets = () => {
     rocketName: rocket.rocket_id,
   }))
 
+  const filterQuery = (items, queryParam) => {
+    if (queryParam === 'All') {
+      return items
+    } else if (queryParam !== '') {
+      return items.filter((item) => item.rocket_id.toLowerCase() === queryParam)
+    }
+  }
+
   return (
     <section className='rockets'>
-      <div className='rocket-title'>
-        <h1>Rockets</h1>
-      </div>
+      <TitleCard title='Rockets' className='rocket' />
 
       <div className='filter'>
         <h4>Filter by name</h4>
@@ -45,37 +51,9 @@ const Rockets = () => {
       </div>
 
       <div className='rocket-cards'>
-        {allRockets
-          .filter((filterRocket) => {
-            if (filterParam === 'All') {
-              return filterRocket
-            } else if (filterParam !== '') {
-              return filterRocket.rocket_id.toLowerCase() === filterParam
-            }
-            return true
-          })
-          .map((rocket) => (
-            <div className='rocket-card' key={rocket.id}>
-              {console.log(rocket.id)}
-              <article>
-                <img src={rocket && rocket.flickr_images[0]} alt='' />
-
-                <div className='rocket-card-top'>
-                  <h1>{rocket && rocket.rocket_name}</h1>
-                  <span>{moment(rocket.first_flight).format('MMM YYYY')}</span>
-                </div>
-
-                <p>
-                  {rocket && rocket.description.substring(0, 100) + '...'}
-                  <Link
-                    className='rocket-link'
-                    to={rocket && `/rocket/${rocket.rocket_id}`}>
-                    Read More
-                  </Link>
-                </p>
-              </article>
-            </div>
-          ))}
+        {filterQuery(allRockets, filterParam).map((rocket) => (
+          <RocketCard rocket={rocket} />
+        ))}
       </div>
     </section>
   )
