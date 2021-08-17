@@ -23,8 +23,6 @@ const Home = () => {
     fetchCompanyInfo()
   }, [])
 
-  const executeScroll = () => {}
-
   return (
     <>
       <section className='header'>
