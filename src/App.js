@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom'
 import './App.css'
 import History from './components/history/History'
 import Home from './components/home/Home'
@@ -20,6 +25,10 @@ function App() {
           <Route exact path='/launch/:id' component={LaunchePage} />
 
           <Route exact path='/rocket/:id' component={RocketPage} />
+
+          <Route path='*'>
+            <Redirect to='/' />
+          </Route>
         </Switch>
       </Router>
     </div>

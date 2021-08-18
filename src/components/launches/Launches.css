@@ -55,6 +55,7 @@
 
 .launch-search input[type='text'] {
   padding-left: 40px;
+  text-transform: lowercase;
 }
 
 .launch-search input:focus {
