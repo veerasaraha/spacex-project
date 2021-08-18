@@ -8,7 +8,8 @@
 
 <h1 align='center'>SpaceX - Web App </h1>
 
-Simple spaceX web where you can explore about spacex history , launchs and rockets.
+Simple spaceX web where you can explore about spacex history , launchs and rockets.<br />
+Deployed version of this site : [spacex-web-app](https://spacex-web-app.netlify.app/)
 
 ## Table Of Contents
 
@@ -137,6 +138,7 @@ Moment - It helps to get a better version of Date.<br />
 - Improve user interface design
 - Can include more pages ( in that case must use any ** State Management Tool  **)  
 - Improve SEO optimization
+- Can improve responsiveness to landscape orientation.
 
 # Architecture <a name='architecture'></a>
 
