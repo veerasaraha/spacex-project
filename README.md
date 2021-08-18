@@ -135,7 +135,7 @@ Moment - It helps to get a better version of Date.<br />
 
 find the component architecture design for this project :
 <div align='center'>
-  <img src='.SpaceX.png' />
+  <img src='SpaceX.png' />
 </div>
 
 # API <a name='api'></a>
