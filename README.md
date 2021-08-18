@@ -23,6 +23,7 @@ Simple spaceX web where you can explore about spacex history , launchs and rocke
   - [Main-Stack](#main-stack)
   - [Libraries](#libraries)
 - [Features](#features)
+- [Architecture](#architecture) 
 - [API](#api)
 
 # General Info
@@ -119,6 +120,7 @@ CSS - Cascading Style Sheets (CSS) is a style sheet language used for describing
 
 ## Libraries <br /> <a name='libraries'></a>
 
+React-Router-Dom - Used to navigate the user to requested page without loading the web browser. 
 Axios - It used to fetch data from the server with ease.<br />
 Lodash - Used some util function from this library.<br />
 Moment - It helps to get a better version of Date.<br />
@@ -127,6 +129,14 @@ Moment - It helps to get a better version of Date.<br />
 
 - To Get to know about spacex or you wish to view whenever you want **_You can install this as native app_**
 - This supports **PWD** ( progressive web application ) which you can install it as native andriod app.
+
+
+# Architecture <a name='architecture '></a>
+
+find the component architecture design for this project :
+<div align='center'>
+  <img src='.SpaceX.png' />
+</div>
 
 # API <a name='api'></a>
 
