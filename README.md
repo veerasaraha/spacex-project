@@ -23,6 +23,7 @@ Simple spaceX web where you can explore about spacex history , launchs and rocke
   - [Main-Stack](#main-stack)
   - [Libraries](#libraries)
 - [Features](#features)
+- [Upcoming](#upcoming)
 - [Architecture](#architecture) 
 - [API](#api)
 
@@ -130,6 +131,12 @@ Moment - It helps to get a better version of Date.<br />
 - To Get to know about spacex or you wish to view whenever you want **_You can install this as native app_**
 - This supports **PWD** ( progressive web application ) which you can install it as native andriod app.
 
+# Upcoming <a name='upcoming'></a>
+
+- In the upcoming versions of this app may include Advance filter using sort by year or ascending and descending order like that.
+- Improve user interface design
+- Can include more pages ( in that case must use any ** State Management Tool  **)  
+- Improve SEO optimization
 
 # Architecture <a name='architecture'></a>
 
