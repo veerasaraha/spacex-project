@@ -131,7 +131,7 @@ Moment - It helps to get a better version of Date.<br />
 - This supports **PWD** ( progressive web application ) which you can install it as native andriod app.
 
 
-# Architecture <a name='architecture '></a>
+# Architecture <a name='architecture'></a>
 
 find the component architecture design for this project :
 <div align='center'>
